@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/didadadida93/.vim'
+let g:netrw_dirhist_2='/home/didadadida93/Desktop/hydrogenERA/Client/.git'
+let g:netrw_dirhist_3='/home/didadadida93/hacktiv8/phase2/e-commerce/server/test'
+let g:netrw_dirhist_4='/home/didadadida93/hacktiv8/phase2/e-commerce/server/models/index.js'
