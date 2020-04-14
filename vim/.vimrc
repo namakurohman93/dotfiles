@@ -6,7 +6,17 @@ set softtabstop=2
 set smartindent
 set smarttab
 set number
+set path+=**
+set wildignore+=*/node_modules/*
+set wildignore+=*/.git/*
+set wildignore+=/usr/**
+set wildmenu
+set laststatus=2
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+
+set backupdir=/home/didadadida93/.vim/tmp//
+set directory=/home/didadadida93/.vim/tmp//
+set undodir=/home/didadadida93/.vim/tmp//
 
 syntax on
 filetype plugin indent on
@@ -17,9 +27,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
-Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'css', 'less', 'scss', 'json', 'markdown', 'vue', 'jsx', 'html'] }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'markdown', 'vue', 'jsx', 'html'] }
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-fugitive'
+
+Plug 'tmhedberg/matchit'
 
 call plug#end()
 
@@ -28,7 +41,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let g:prettier#quickfix_auto_focus = 0
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.css,*.less,*.scss,*.json,*.md,*.html,*.jsx,*.ts Prettier
+" autocmd BufWritePre *.js,*.ts,*.css,*.less,*.scss,*.json,*.md,*.html,*.jsx Prettier
 
 let g:NERDTreeIgnore = ['node_modules', 'package-lock.json', '^\.git$', '.swp', '.cache',  'build', '.expo-shared', '.nyc_output']
 let g:NERDTreeShowHidden = 1
@@ -104,3 +117,36 @@ nmap <leader>e, i<C-K>,<Esc>
 nmap <leader>ej i<C-K>j<Esc>
 
 vmap <leader>e, <C-K>,
+
+" MyStatusLine() {{{
+
+function! MyStatusLine()
+    let statusline = ""
+    " Filename (F -> full, f -> relative)
+    let statusline .= "%f"
+    " Buffer flags
+    let statusline .= "%( %h%1*%m%*%r%w%) "
+    " File format and type
+    let statusline .= "(%{&ff}%(\/%Y%))"
+    " Left/right separator
+    let statusline .= "%="
+    " Line & column
+    let statusline .= "(%l,%c%V) "
+    " Character under cursor (decimal)
+    let statusline .= "%03.3b "
+    " Character under cursor (hexadecimal)
+    let statusline .= "0x%02.2B "
+    " File progress
+    let statusline .= "| %P/%L"
+    " Add vim-fugitive
+    return statusline
+endfunction
+
+" }}}
+
+set statusline=%!MyStatusLine()
+
+colorscheme industry
+
+nnoremap <F5> :set hlsearch!<CR>
+imap <C-a> <C-n>
