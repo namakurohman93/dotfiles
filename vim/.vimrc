@@ -134,3 +134,5 @@ colorscheme industry
 
 nnoremap <F5> :set hlsearch!<CR>
 imap <C-a> <C-n>
+
+au FileType jst let b:AutoPairs = AutoPairsDefine({'<%' : '%>', '<%=' : '%>', '<%-' : '%>'})
