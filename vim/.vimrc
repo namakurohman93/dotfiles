@@ -136,3 +136,8 @@ nnoremap <F5> :set hlsearch!<CR>
 imap <C-a> <C-n>
 
 au FileType jst let b:AutoPairs = AutoPairsDefine({'<%' : '%>', '<%=' : '%>', '<%-' : '%>'})
+
+autocmd BufWritePre *
+    \ if !isdirectory(expand("<afile>:p:h")) |
+        \ call mkdir(expand("<afile>:p:h"), "p") |
+    \ endif
