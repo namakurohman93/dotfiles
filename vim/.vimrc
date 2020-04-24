@@ -15,9 +15,9 @@ set laststatus=2
 set noshowmode
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
 
-set backupdir=/home/didadadida93/.vim/tmp//
-set directory=/home/didadadida93/.vim/tmp//
-set undodir=/home/didadadida93/.vim/tmp//
+set backupdir=~/.vim/tmp//
+set directory=~/.vim/tmp//
+set undodir=~/.vim/tmp//
 
 syntax on
 filetype plugin indent on
