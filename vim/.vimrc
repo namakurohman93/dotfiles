@@ -13,7 +13,7 @@ set wildignore+=/usr/**
 set wildmenu
 set laststatus=2
 set noshowmode
-autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+" autocmd FileType python setlocal shiftwidth=4 softtabstop=4
 
 set backupdir=~/.vim/tmp//
 set directory=~/.vim/tmp//
@@ -27,12 +27,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'sheerun/vim-polyglot'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'markdown', 'vue', 'jsx', 'html'] }
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-python/python-syntax'
 
 call plug#end()
 
@@ -130,6 +131,7 @@ let g:lightline = {
       \ },
       \ }
 
+" colorscheme onedark
 colorscheme industry
 
 nnoremap <F5> :set hlsearch!<CR>
@@ -141,3 +143,7 @@ autocmd BufWritePre *
     \ if !isdirectory(expand("<afile>:p:h")) |
         \ call mkdir(expand("<afile>:p:h"), "p") |
     \ endif
+
+let g:python_highlight_all = 1
+
+set timeoutlen=1000 ttimeoutlen=0
