@@ -10,7 +10,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-python/python-syntax'
+
 Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 
 call plug#end()
 
@@ -66,6 +68,7 @@ set wildignore+=/usr/**
 set wildmenu
 set laststatus=2
 set noshowmode
+set incsearch
 
 set backupdir=~/.vim/tmp//
 set directory=~/.vim/tmp//
@@ -77,6 +80,8 @@ syntax on
 filetype plugin indent on
 
 colorscheme onedark
+" colorscheme one
+" set background=light
 
 au InsertEnter * silent execute "!echo -en \<esc>[3 q"
 au InsertLeave * silent execute "!echo -en \<esc>[2 q"
