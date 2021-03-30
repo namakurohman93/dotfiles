@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'markdown', 'vue', 'jsx', 'html'] }
+Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'markdown', 'vue', 'jsx', 'html'] }
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-fugitive'
