@@ -10,11 +10,21 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-python/python-syntax'
-
 Plug 'joshdick/onedark.vim'
-Plug 'rakr/vim-one'
+Plug 'mxw/vim-jsx'
+Plug 'Yggdroot/indentLine'
+Plug 'unblevable/quick-scope'
+Plug 'leafOfTree/vim-vue-plugin'
 
 call plug#end()
+
+" quick-scope custom
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" vim-vue-plugin customize
+let g:vim_vue_plugin_load_full_syntax = 1
+let g:vim_vue_plugin_highlight_vue_attr = 1
+let g:vim_vue_plugin_highlight_vue_keyword = 1
 
 " AutoPairs custom setting
 au FileType jst let b:AutoPairs = AutoPairsDefine({'<%' : '%>', '<%=' : '%>', '<%-' : '%>'})
@@ -24,14 +34,14 @@ au FileType html let b:AutoPairs = AutoPairsDefine({'<%' : '%>', '<%=' : '%>', '
 let g:NERDSpaceDelims = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['node_modules', '^\.git$', '*.sw?', '.cache',  '^build$', '.expo-shared', '.nyc_output']
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+au bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " prettier custom setting
-let g:prettier#autoformat = 0
-let g:prettier#quickfix_auto_focus = 0
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#semi = 'true'
-" autocmd BufWritePre *.js,*.ts,*.css,*.less,*.scss,*.json,*.md,*.html,*.jsx Prettier
+" let g:prettier#autoformat = 0
+" let g:prettier#quickfix_auto_focus = 0
+" let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#semi = 'false'
+" au BufWritePre *.js,*.ts,*.css,*.less,*.scss,*.json,*.md,*.html,*.jsx Prettier
 
 " emmet mapping
 " <C-y> emmet leader key is already used by default for scrolling vim window
@@ -54,12 +64,9 @@ let g:lightline = {
       \ }
 
 set nocompatible
-set autoindent
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-set smartindent
-set smarttab
 set number
 set path+=**
 set wildignore+=*/node_modules/*
@@ -69,24 +76,27 @@ set wildmenu
 set laststatus=2
 set noshowmode
 set incsearch
-
-set backupdir=~/.vim/tmp//
-set directory=~/.vim/tmp//
-set undodir=~/.vim/tmp//
-
+set nobackup
+set noswapfile
+set nomodeline
 set timeoutlen=1000 ttimeoutlen=0
+set foldmethod=syntax
+set foldlevel=99
+set cursorline
+" set relativenumber
+set colorcolumn=80
 
 syntax on
+syntax enable
 filetype plugin indent on
 
 colorscheme onedark
-" colorscheme one
-" set background=light
 
 au InsertEnter * silent execute "!echo -en \<esc>[3 q"
 au InsertLeave * silent execute "!echo -en \<esc>[2 q"
+
 au BufNewFile,BufRead *.ejs set filetype=html
-autocmd BufWritePre *
+au BufWritePre *
     \ if !isdirectory(expand("<afile>:p:h")) |
         \ call mkdir(expand("<afile>:p:h"), "p") |
     \ endif
@@ -122,8 +132,7 @@ noremap <leader>ve :edit $MYVIMRC<cr>
 noremap <leader>vs :source $MYVIMRC<cr>
 noremap <leader>VUE :call PrintVueTemplate()<CR>ggdd
 noremap <leader>HTML :call PrintHTMLTemplate()<CR>ggdd
-
-vmap <leader>e, <C-K>,
+noremap <leader>r :e<CR>
 
 function! PrintVueTemplate()
   r~/.vim/templates/vue-template.txt
@@ -132,3 +141,26 @@ endfunction
 function! PrintHTMLTemplate()
   r~/.vim/templates/html-template.txt
 endfunction
+
+function! GoTab()
+  set shiftwidth=4
+  set softtabstop=4
+endfunction
+
+"-- FOLDING --
+" set foldcolumn=1 "defines 1 col at window left, to indicate folding
+let javaScript_fold=1 "activate folding by JS syntax
+
+" here is the devil sleeping
+fun s:DetectEnv()
+  let tokens = split(getline(1))
+  if len(tokens) >= 2
+    setfiletype tokens[1]
+  endif
+endfun
+
+autocmd BufNewFile,BufRead * call s:DetectEnv()
+autocmd FileType go :call GoTab()
+
+let g:indentLine_enabled = 0
+noremap <leader>ll :IndentLinesToggle<CR>
