@@ -166,7 +166,7 @@ let g:pear_tree_smart_backspace=1
 
 command! RgCurrentWord
     \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case -- ' . shellescape('\b' . expand('<cword>') . '\b'),
+    \   'rg --column --line-number --no-heading --color=always --smart-case --word-regexp -- ' . shellescape(expand('<cword>')),
     \   1,
     \   fzf#vim#with_preview(),
     \   0
@@ -174,19 +174,11 @@ command! RgCurrentWord
 
 command! -nargs=* RgExactWord
     \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case -- ' . shellescape('\b' . <q-args> . '\b'),
+    \   'rg --column --line-number --no-heading --color=always --smart-case --word-regexp -- ' . shellescape(<q-args>),
     \   1,
     \   fzf#vim#with_preview(),
     \   0
     \ )
-
-function! RipgrepFzf(query)
-    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-    let initial_command = printf(command_fmt, shellescape(a:query))
-    let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:' . reload_command]}
-    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), 0)
-endfunction
 
 " --- }}}
 
