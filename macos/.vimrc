@@ -2,13 +2,13 @@
 
 call plug#begin()
 
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'joshdick/onedark.vim'
-Plug 'tmsvg/pear-tree'
 Plug 'unblevable/quick-scope'
 Plug 'qpkorr/vim-bufkill'
 Plug 'sheerun/vim-polyglot'
@@ -101,8 +101,6 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>fn :enew<cr>
 nnoremap <leader>tn :set number!<cr>
 
-imap <space> <plug>(PearTreeSpace)
-
 inoremap <c-u> <esc>viwuea
 inoremap <c-U> <esc>viwUea
 
@@ -152,12 +150,9 @@ let g:NERDSpaceDelims=1
 " --- }}}
 
 
-" pear-tree custom settings --- {{{
+" auto-pairs custom settings --- {{{
 
-let g:pear_tree_repeatable_expand=0
-let g:pear_tree_smart_openers=1
-let g:pear_tree_smart_closers=1
-let g:pear_tree_smart_backspace=1
+let g:AutoPairsMapCR = 0
 
 " --- }}}
 
