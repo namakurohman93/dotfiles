@@ -49,7 +49,7 @@ let &t_EI="\<esc>[2 q"
 " global custom options --- {{{
 
 set number
-set numberwidth=4
+set numberwidth=5
 set laststatus=2
 set expandtab
 set shiftwidth=2
