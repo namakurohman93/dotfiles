@@ -10,6 +10,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'joshdick/onedark.vim'
 Plug 'unblevable/quick-scope'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'qpkorr/vim-bufkill'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
@@ -25,7 +26,8 @@ if !exists('g:syntax_on')
     syntax enable
 endif
 
-colorscheme onedark
+" colorscheme onedark
+colorscheme dracula
 filetype plugin indent on
 
 " autocmd insertenter * silent execute "!echo -en \<esc>[3 q"
@@ -78,6 +80,8 @@ noremap J G
 noremap K gg
 noremap L <s-$>
 
+nnoremap n nzzzv
+nnoremap N Nzzzv
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -110,6 +114,7 @@ inoremap <c-U> <esc>viwUea
 " auto-pairs custom settings --- {{{
 
 let g:AutoPairsCenterLine=0
+let g:AutoPairsMapCR = 0
 
 " --- }}}
 
@@ -146,13 +151,6 @@ augroup end
 " nerdcommenter custom settings --- {{{
 
 let g:NERDSpaceDelims=1
-
-" --- }}}
-
-
-" auto-pairs custom settings --- {{{
-
-let g:AutoPairsMapCR = 0
 
 " --- }}}
 
