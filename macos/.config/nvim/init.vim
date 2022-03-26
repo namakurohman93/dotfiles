@@ -21,6 +21,11 @@ call plug#end()
 
 " global custom settings --- {{{
 
+if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+  let &t_8f = "\<esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<esc>[48;2;%lu;%lu;%lum"
+endif
+
 if !exists('g:syntax_on')
     syntax enable
 endif
@@ -82,11 +87,11 @@ set hidden " enable to open new buffer when there is a changes on current buffer
 
 let mapleader="\<space>"
 
-nnoremap <space> <nop>
-nnoremap H <s-^>
-nnoremap J G
-nnoremap K gg
-nnoremap L <s-$>
+noremap <space> <nop>
+noremap H <s-^>
+noremap J G
+noremap K gg
+noremap L <s-$>
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
