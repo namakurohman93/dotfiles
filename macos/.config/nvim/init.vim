@@ -66,8 +66,8 @@ set number
 set numberwidth=5
 set laststatus=2
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+" set shiftwidth=2
+" set softtabstop=2
 set ttimeoutlen=0
 set nobackup
 set noswapfile
@@ -212,9 +212,9 @@ augroup filetype_vim
 augroup end
 
 function! s:VimCustomSettings()
-    setlocal foldmethod=marker
     setlocal shiftwidth=4
     setlocal softtabstop=4
+    setlocal foldmethod=marker
 endfunction
 
 " --- }}}
@@ -228,6 +228,8 @@ augroup filetype_js
 augroup end
 
 function! s:JavascriptCustomSettings()
+    setlocal shiftwidth=2
+    setlocal softtabstop=2
     setlocal foldmethod=syntax
     setlocal foldlevel=99
     let javascript_fold=1
@@ -244,6 +246,21 @@ augroup filetype_json
 augroup end
 
 function! s:JsonCustomSettings()
+    setlocal foldmethod=syntax
+    setlocal foldlevel=99
+endfunction
+
+" --- }}}
+
+" go filetype settings --- {{{
+augroup filetype_go
+    autocmd!
+    autocmd filetype go :call <sid>GoCustomSettings()
+augroup end
+
+function! s:GoCustomSettings()
+    setlocal shiftwidth=4
+    setlocal softtabstop=4
     setlocal foldmethod=syntax
     setlocal foldlevel=99
 endfunction
