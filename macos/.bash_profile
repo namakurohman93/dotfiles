@@ -7,6 +7,7 @@ alias ls="ls -Gp"
 alias ll="ls -alFGp"
 alias la="ls -A"
 alias l="ls -CF"
+alias ldir="ls -alFGpd */ .*/"
 # alias ve="vim ~/.vimrc"
 alias ve="nvim ~/.config/nvim/init.vim"
 alias tmx-ks="tmux kill-server"
@@ -16,6 +17,7 @@ alias cat="bat"
 alias be="tmux neww nvim ~/.bash_profile"
 alias bs="source ~/.bash_profile"
 alias vim="nvim"
+alias gf="gofmt -s -w ."
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -45,7 +47,8 @@ elif [ "$TERM_PROGRAM" == "tmux" ] && [ "$TMUX_SESSION_NAME" == "muchamadr" ]; t
   git config --global user.name "Muchamad Rohman"
   git config --global user.email "muchamad.rohman@ir.com"
 else
-  :
+  git config --global user.name "didadadida93"
+  git config --global user.email "didadadida93@gmail.com"
 fi
 
 # IR AWS CLI Login: Begin ===== ===== =====
@@ -53,7 +56,3 @@ export AWS_CLI_LOGIN_SCRIPT_PATH="/Users/didadadida93/g/git-local/aws-cli-login/
 export AWS_CLI_LOGIN_PYTHON_PATH="/Users/didadadida93/.local/share/virtualenvs/aws-cli-login-j598tT0S/bin/python"
 source "/Users/didadadida93/g/git-local/aws-cli-login/alias.sh"
 # IR AWS CLI Login: End ===== ===== =====
-
-ovi () {
-  vim $(fzf)
-}

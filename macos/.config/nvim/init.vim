@@ -252,7 +252,9 @@ endfunction
 
 " --- }}}
 
+
 " go filetype settings --- {{{
+
 augroup filetype_go
     autocmd!
     autocmd filetype go :call <sid>GoCustomSettings()
