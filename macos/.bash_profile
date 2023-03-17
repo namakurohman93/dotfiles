@@ -9,7 +9,7 @@ alias la="ls -A"
 alias l="ls -CF"
 alias ldir="ls -alFGpd */ .*/"
 # alias ve="vim ~/.vimrc"
-alias ve="nvim ~/.config/nvim/init.vim"
+# alias ve="nvim ~/.config/nvim/init.vim"
 alias tmx-ks="tmux kill-server"
 alias tmx-ns="tmux new-session -s'didadadida93'"
 alias tmx-ws="tmux new-session -s'muchamadr'"
@@ -17,7 +17,7 @@ alias cat="bat"
 alias be="tmux neww nvim ~/.bash_profile"
 alias bs="source ~/.bash_profile"
 alias vim="nvim"
-alias gf="gofmt -s -w ."
+# alias gf="gofmt -s -w ."
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
