@@ -29,10 +29,4 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.opt.cursorline = true
-vim.opt.guicursor = "n-o-c-ci-cr-sm:block,i-v-ve:hor30"
-
-vim.api.nvim_command([[
-augroup global_settings
-autocmd filetype * setlocal formatoptions-=cro
-augroup end
-]])
+vim.opt.guicursor = "n-o-c-ci-cr-sm-v-ve:block,i:hor20"

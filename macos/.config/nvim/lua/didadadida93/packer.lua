@@ -4,8 +4,21 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+
+    use 'nvim-lua/plenary.nvim'
+
+    use 'Mofiqul/dracula.nvim'
+
+    use 'unblevable/quick-scope'
+
+    use 'qpkorr/vim-bufkill'
+
+    use { 'kylechui/nvim-surround', tag = '*' }
+
+    use 'windwp/nvim-autopairs'
+
+    use 'nvim-lualine/lualine.nvim'
 
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -15,56 +28,30 @@ return require('packer').startup(function(use)
         end,
     }
 
-    use "nvim-lua/plenary.nvim"
+    use 'ThePrimeagen/harpoon'
+
+    use 'neovim/nvim-lspconfig'
+
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+    use 'terrortylor/nvim-comment'
+
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.1' }
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     }
 
-    use('ThePrimeagen/harpoon')
+    use 'nvim-telescope/telescope-file-browser.nvim'
 
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        requires = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    use 'hrsh7th/nvim-cmp'
 
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},         -- Required
-            {'hrsh7th/cmp-nvim-lsp'},     -- Required
-            {'hrsh7th/cmp-buffer'},       -- Optional
-            {'hrsh7th/cmp-path'},         -- Optional
-            {'saadparwaiz1/cmp_luasnip'}, -- Optional
-            {'hrsh7th/cmp-nvim-lua'},     -- Optional
+    use 'hrsh7th/cmp-nvim-lsp'
 
-            -- Snippets
-            {'L3MON4D3/LuaSnip'},             -- Required
-            {'rafamadriz/friendly-snippets'}, -- Optional
-        }
-    }
+    use 'L3MON4D3/LuaSnip'
 
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+    use 'hrsh7th/cmp-path'
 
-    use({
-        "kylechui/nvim-surround",
-        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    })
-
-    use({ 'rose-pine/neovim', as = 'rose-pine' })
-
-    use({'qpkorr/vim-bufkill'})
-    use({'JoosepAlviste/nvim-ts-context-commentstring'})
-    use({"terrortylor/nvim-comment"})
-
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v2', -- optional but strongly recommended
-    }
-    use {"windwp/nvim-autopairs"}
-    use {'nvim-lualine/lualine.nvim'}
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
 end)
