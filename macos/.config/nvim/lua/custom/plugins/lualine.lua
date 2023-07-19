@@ -51,6 +51,7 @@ return {
         --   'filetype',
         --   icon_only = true,
         -- },
+        require('comment-mode').comment_mode_component,
       },
     },
   },

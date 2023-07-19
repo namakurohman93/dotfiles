@@ -130,6 +130,9 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  -- My custom plugin
+  { 'didadadida93/comment-mode' },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -164,6 +167,8 @@ require('config.telescope')
 require('config.treesitter')
 require('config.lsp')
 require('config.nvim-cmp')
+
+require('comment-mode').init()
 
 vim.cmd [[
   highlight QuickScopePrimary guifg=#ff007c gui=bold ctermfg=198 cterm=bold

@@ -19,3 +19,4 @@ vim.keymap.set('i', '<C-U>', '<Esc>viwUea', { silent = true, desc = 'Uppercase d
 vim.keymap.set('n', '<leader>c ', vim.cmd.CommentToggle, { silent = true, desc = 'Comment current line' })
 vim.keymap.set('v', '<leader>c ', ":'<,'>CommentToggle<cr>", { silent = true, desc = 'Comment current visual selected' })
 vim.keymap.set('n', '<leader>n', ':Neotree toggle<cr>', { silent = true, desc = 'Toggle [N]eotree' })
+vim.keymap.set('n', '<leader>cm', require('comment-mode').toggle_comment_mode, { silent = true, desc= 'Toggle [C]omment [M]ode' })
